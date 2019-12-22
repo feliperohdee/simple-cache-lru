@@ -34,12 +34,13 @@ describe('libs/cache.js', () => {
         });
 
         it('should set and stale', () => {
-            cache.set('b', 'c');
+            expect(cache.set('b', 'c')).to.equal('c');
             expect(cache.get('a')).to.be.null;
             expect(cache.get('b')).to.equal('c');
-            cache.set('c', 'd');
+            expect(cache.set('c', 'd')).to.equal('d');
             expect(cache.get('b')).to.be.null;
             expect(cache.get('c')).to.equal('d');
+            expect(cache.set('d', 'ef')).to.be.null;
         });
     });
 });

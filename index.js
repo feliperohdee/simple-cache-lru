@@ -24,6 +24,10 @@ module.exports = class Cache extends LRU {
             throw new Error('key must be string.');
         }
         
-        return super.set(key, JSON.stringify(value), maxAge);
+        if(super.set(key, JSON.stringify(value), maxAge)) {
+            return value;
+        }
+
+        return null;
     }
 };
